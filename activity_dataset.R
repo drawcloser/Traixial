@@ -33,4 +33,4 @@ names(mtt)[5] <- paste("features")
 traixial_data <- separate(data= mtt, col = features, into = c("features","measurement","triaxial"))
 
 #create the csv file
-write.table(traixial_data, file = "triaxial_data", row.name=FALSE)
+write.table(traixial_data, file = "triaxial_data.txt", row.name=FALSE)
