@@ -16,4 +16,4 @@ activity_dataset.R: This code is to tidy the mean_and_std_data. And make a file 
 traixial.csv: The tidy data of the experiment data.
 
 
-CODEBOOK.md: It is the codebook for father analysing the data "traixial.txt".
+CODEBOOK.md: It is the codebook for father analysing the data "traixial.csv".
