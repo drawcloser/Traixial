@@ -68,7 +68,7 @@ Data Dictionary - 2012 Human
     ."Z"
     ."NA"
     
- mean  11080
+ mean  11880
  
     calculating average of each variable for each activity and each subject according the features.
  
