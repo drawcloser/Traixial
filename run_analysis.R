@@ -3,12 +3,12 @@ features <- read.table("./UCI HAR Dataset/features.txt", col.names = c("order", 
 activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt", col.names = c("numbers", "activity"), colClasses = c("numeric", "character"))
 
 # read files in the train directory
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = "numbers", colClasses = "numeric")
+y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", col.names = "activity", colClasses = "numeric")
 x_train <- read.table("./UCI HAR Dataset/train/x_train.txt")
 subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
 
 # read files in the text directory
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = "numbers", colClasses = "numeric")
+y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", col.names = "activity", colClasses = "numeric")
 x_test <- read.table("./UCI HAR Dataset/test/x_test.txt")
 subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
 
@@ -31,7 +31,6 @@ test_data <- cbind(subject_test, test_activity, x_test)
 # merge the train_data and test_data
 data <- rbind(train_data, test_data)
 names(data)[4:564] <- features[,"measurement"]
-names(data)[2] <- paste("activity")
 
 # select mean and std of the data
 mean_data <- data[,grep("mean\\()", names(data), value=T)]
@@ -46,21 +45,23 @@ names(mean_and_std_data)[4:69] <- paste("l",4:69,sep="")
 gather_data <- gather(mean_and_std_data, features, points, l4:l69)
 
 #mutate the train mean
-gather_train_data <- filter(gather_data, method == "train")
-group_data <- group_by(gather_train_data, subject, activity, features)
-mutate_data <- mutate(group_data, mean = mean(points))
-mutate_data_sub <- select(mutate_data,-(points))
-unique_train_data <- unique(mutate_data_sub)
+gather_train_data <- gather_data %>%
+  filter(method == "train") %>%
+  group_by(subject, activity, features) %>%
+  mutate(mean = mean(points)) %>%
+  select(-(points) %>%
+  unique()
 
 #mutate the test mean
-gather_test_data <- filter(gather_data, method == "test")
-test_group <- group_by(gather_test_data, subject, activity, features)
-test_mutate <- mutate(test_group, mean = mean(points))
-test_mutate_sub <- select(test_mutate,-(points))
-unique_test_data <- unique(test_mutate_sub)
+gather_test_data <- gather_data %>%
+  filter(method == "test") %>%
+  group_by(subject, activity, features) %>%
+  mutate(mean = mean(points)) %>%
+  select(-(points)) %>%
+  unique()
 
 #merge data
-mean_train_test <- rbind(unique_train_data, unique_test_data)
+mean_train_test <- rbind(gather_train_data, gather_test_data)
 
 #names the features
 mas_features$features <- paste("l", 4:69,sep="")
