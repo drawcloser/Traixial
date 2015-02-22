@@ -1,19 +1,19 @@
 Data Dictionary - 2012 Human
 
  RT   1
- 
+  
    Record Type
    
-      H . Human Using Smartphones Activity Recognition database
+   H . Human Using Smartphones Activity Recognition database
       
  subject 30
- 
+  
    Subject/Person serial number
-   
-      1...30  .Unique identifier assigned by numbers
+  
+   1...30  .Unique identifier assigned by numbers
       
  activity 6
- 
+   
    Activities of the experiments
    
       ."STANDING"
