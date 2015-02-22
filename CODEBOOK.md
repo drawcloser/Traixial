@@ -57,7 +57,6 @@ Data Dictionary - 2012 Human
     calculate method
     
     ."mean"
-    ."meanFreq"
     ."std"/standard deviation
     
   triaxial 3
@@ -67,6 +66,7 @@ Data Dictionary - 2012 Human
     ."X"
     ."Y"
     ."Z"
+    ."NA"
     
  
   NOTE: For additional information visit the website at: 
