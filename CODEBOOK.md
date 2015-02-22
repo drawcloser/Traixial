@@ -1,19 +1,19 @@
 Data Dictionary - 2012 Human
 
  RT   1
-  
+ 
    Record Type
    
-   H . Human Using Smartphones Activity Recognition database
+      H . Human Using Smartphones Activity Recognition database
       
  subject 30
-  
+ 
    Subject/Person serial number
-  
-   1...30  .Unique identifier assigned by numbers
+   
+      1...30  .Unique identifier assigned by numbers
       
  activity 6
-   
+ 
    Activities of the experiments
    
       ."STANDING"
@@ -57,6 +57,7 @@ Data Dictionary - 2012 Human
     calculate method
     
     ."mean"
+    ."meanFreq"
     ."std"/standard deviation
     
   triaxial 3
@@ -66,7 +67,6 @@ Data Dictionary - 2012 Human
     ."X"
     ."Y"
     ."Z"
-    ."NA"
     
  
   NOTE: For additional information visit the website at: 

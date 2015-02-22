@@ -34,16 +34,16 @@ names(data)[4:564] <- features[,"measurement"]
 names(data)[2] <- paste("activity")
 
 # select mean and std of the data
-mean_data <- data[,grep("mean()", names(data), value=T)]
+mean_data <- data[,grep("mean\\()", names(data), value=T)]
 std_data <- data[,grep("std()", names(data), value=T)]
 mean_and_std_data <- cbind(data[1:3], mean_data, std_data)
 
 # renames the data variable names for tidy data
 library(dplyr)
 library(tidyr)
-mas_features <- data.frame(names(mean_and_std_data)[4:82])
-names(mean_and_std_data)[4:82] <- paste("l",4:82,sep="")
-gather_data <- gather(mean_and_std_data, features, points, l4:l82)
+mas_features <- data.frame(names(mean_and_std_data)[4:69])
+names(mean_and_std_data)[4:69] <- paste("l",4:69,sep="")
+gather_data <- gather(mean_and_std_data, features, points, l4:l69)
 
 #mutate the train mean
 gather_train_data <- filter(gather_data, method == "train")
@@ -63,14 +63,14 @@ unique_test_data <- unique(test_mutate_sub)
 mean_train_test <- rbind(unique_train_data, unique_test_data)
 
 #names the features
-mas_features$features <- paste("l", 4:82,sep="")
+mas_features$features <- paste("l", 4:69,sep="")
 mean_train_test <- merge(mean_train_test, mas_features, by = "features")
 mtt <- select(mean_train_test, -(features))
 names(mtt)[5] <- paste("features")
+
 
 #tidy the features value
 traixial_data <- separate(data= mtt, col = features, into = c("features","measurement","triaxial"))
 
 #create the csv file
 write.table(traixial_data, file = "triaxial_data.txt", row.name=FALSE)
-
