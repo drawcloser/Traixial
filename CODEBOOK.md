@@ -30,7 +30,7 @@ Data Dictionary - 2012 Human
       ."train"
       ."test"
   
-  features 17
+  measurement 17
   
     features of observation
     
@@ -52,7 +52,7 @@ Data Dictionary - 2012 Human
 	."fBodyBodyGyroMag"
   	."fBodyBodyGyroJerkMag"
 
-  measurement 3
+  mean 3
   
     calculate method
     
