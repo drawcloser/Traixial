@@ -30,7 +30,7 @@ Data Dictionary - 2012 Human
       ."train"
       ."test"
   
-  measurement 17
+  features 17
   
     features of observation
     
@@ -52,7 +52,7 @@ Data Dictionary - 2012 Human
 	."fBodyBodyGyroMag"
   	."fBodyBodyGyroJerkMag"
 
-  mean 3
+  measurement 2
   
     calculate method
     
@@ -68,6 +68,10 @@ Data Dictionary - 2012 Human
     ."Z"
     ."NA"
     
+ mean  11080
+ 
+    calculating average of each variable for each activity and each subject according the features.
+ 
  
   NOTE: For additional information visit the website at: 
   http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
